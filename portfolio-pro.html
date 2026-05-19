@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yassin Tamer - Professional Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --tertiary: #2d2d2d;
+            --light: #f5f5f5;
+            --accent: #e8e8e8;
+            --gold: #d4af37;
+            --gold-dark: #b8941f;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--tertiary) 100%);
+            background-attachment: fixed;
+            color: var(--text-light);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(232, 232, 232, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            background: rgba(10, 10, 10, 0.9);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            animation: navSlideIn 0.8s ease-out;
+        }
+
+        @keyframes navSlideIn {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Raleway', sans-serif;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.2); }
+            50% { text-shadow: 0 0 15px rgba(212, 175, 55, 0.6), 0 0 30px rgba(232, 232, 232, 0.2); }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        nav a:hover::before {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            min-height: calc(100vh - 70px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.5);
+            z-index: 1;
+        }
+
+        .mute-btn {
+            position: absolute;
+            top: 100px;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.8), rgba(184, 148, 31, 0.8));
+            border: 2px solid var(--gold);
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .mute-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+        }
+
+        .mute-btn:active {
+            transform: scale(0.95);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08), transparent);
+            animation: rotate 40s linear infinite;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(232, 232, 232, 0.05), transparent);
+            animation: rotate 50s linear infinite reverse;
+            z-index: 0;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+            animation: slideInLeft 1s ease-out;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            animation: slideInRight 1.2s ease-out;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1.4s ease-out;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1.6s ease-out;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 0.8rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--primary);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        section h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: slideInDown 1s ease-out;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 800;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            border-radius: 2px;
+            box-shadow: 0 0 20px var(--gold);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(232, 232, 232, 0.05));
+            padding: 3rem;
+            border-radius: 1.5rem;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s;
+            animation: cardSlideIn 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes cardSlideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent);
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+        }
+
+        .about-card h3 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 1px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .about-card p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .stat-box:hover::before {
+            left: 100%;
+        }
+
+        .stat-box:hover {
+            transform: scale(1.1) rotate(5deg);
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            position: relative;
+            z-index: 1;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(232, 232, 232, 0.1));
+            border: 3px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2), inset 0 0 40px rgba(212, 175, 55, 0.05);
+            animation: avatarFloat 6s ease-in-out infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes avatarFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Skills Grid */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(232, 232, 232, 0.04));
+            padding: 2.5rem;
+            border-radius: 1.2rem;
+            border: 2px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            animation: scaleIn 0.6s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.08), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .skill-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--gold);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .skill-card:hover .skill-icon {
+            animation: iconBounce 1s ease-in-out infinite;
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+        }
+
+        .skill-list {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .skill-list li:hover {
+            color: var(--gold);
+            transform: translateX(10px);
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            display: inline-block;
+            width: 20px;
+            color: var(--gold);
+            font-weight: bold;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Internship Cards */
+        .internship-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(232, 232, 232, 0.04));
+            padding: 2.5rem;
+            border-radius: 1.2rem;
+            border-left: 4px solid var(--gold);
+            margin-bottom: 3rem;
+            transition: all 0.4s;
+            position: relative;
+            animation: slideInUp 0.8s ease-out backwards;
+        }
+
+        .internship-card:nth-child(1) { animation-delay: 0.2s; }
+        .internship-card:nth-child(2) { animation-delay: 0.4s; }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .internship-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+            border-left-color: var(--white);
+        }
+
+        .internship-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .internship-title {
+            font-size: 1.4rem;
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .internship-company {
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-top: 0.3rem;
+        }
+
+        .internship-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            background: rgba(212, 175, 55, 0.15);
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.6rem;
+            font-size: 0.85rem;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            font-weight: 600;
+        }
+
+        .internship-description {
+            color: var(--text-muted);
+            margin: 1.5rem 0;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            animation: tagPop 0.5s ease-out backwards;
+        }
+
+        @keyframes tagPop {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Certificate Grid */
+        .certificates-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .certificate-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(232, 232, 232, 0.06));
+            padding: 2rem;
+            border-radius: 1.2rem;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            animation: flipIn 0.8s ease-out backwards;
+        }
+
+        @keyframes flipIn {
+            from {
+                opacity: 0;
+                transform: rotateY(-80deg);
+            }
+            to {
+                opacity: 1;
+                transform: rotateY(0);
+            }
+        }
+
+        .certificate-card:nth-child(1) { animation-delay: 0.1s; }
+        .certificate-card:nth-child(2) { animation-delay: 0.2s; }
+        .certificate-card:nth-child(3) { animation-delay: 0.3s; }
+        .certificate-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            animation: slideAcross 2s ease-in-out infinite;
+        }
+
+        @keyframes slideAcross {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-20px) scale(1.05);
+            border-color: var(--gold);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.25);
+        }
+
+        .certificate-visual {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+            animation: certPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes certPulse {
+            0%, 100% { box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3); }
+            50% { box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5); }
+        }
+
+        .certificate-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0, 0, 0, 0.05) 10px, rgba(0, 0, 0, 0.05) 20px);
+        }
+
+        .certificate-icon {
+            font-size: 3rem;
+            position: relative;
+            z-index: 1;
+            animation: certBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes certBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .certificate-card:hover .certificate-icon {
+            animation: certBounce 1s ease-in-out infinite;
+        }
+
+        .certificate-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .certificate-issuer {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.4s ease-out;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(232, 232, 232, 0.05));
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            border-radius: 2rem;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(212, 175, 55, 0.2);
+            border: none;
+            color: var(--gold);
+            font-size: 2rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: var(--gold);
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-cert-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 4rem;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: modalImageBounce 0.6s ease-out;
+        }
+
+        @keyframes modalImageBounce {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-cert-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0, 0, 0, 0.1) 10px, rgba(0, 0, 0, 0.1) 20px);
+            animation: certScroll 2s linear infinite;
+        }
+
+        @keyframes certScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(20px); }
+        }
+
+        .modal-content h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Raleway', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .modal-content .issuer {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-content .description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .cert-details {
+            background: rgba(212, 175, 55, 0.08);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border-left: 4px solid var(--gold);
+            margin-bottom: 1.5rem;
+            animation: slideInLeft 0.6s ease-out 0.2s backwards;
+        }
+
+        .cert-detail-item {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .cert-detail-item strong {
+            color: var(--gold);
+            min-width: 100px;
+        }
+
+        .cert-detail-item span {
+            color: var(--text-muted);
+        }
+
+        .modal-button {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--primary);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 0.6rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.5px;
+            animation: slideInUp 0.6s ease-out 0.4s backwards;
+        }
+
+        .modal-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: stretch;
+        }
+
+        .contact-info-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(232, 232, 232, 0.04));
+            padding: 3rem;
+            border-radius: 1.5rem;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .contact-form-box {
+            background: linear-gradient(135deg, rgba(232, 232, 232, 0.04), rgba(212, 175, 55, 0.08));
+            padding: 3rem;
+            border-radius: 1.5rem;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            animation: slideInRight 1s ease-out;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: all 0.3s;
+            padding: 1rem;
+            border-radius: 0.8rem;
+        }
+
+        .contact-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .contact-detail-title {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .contact-detail-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-detail-text a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .contact-detail-text a:hover {
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            background: rgba(15, 15, 15, 0.5);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            color: var(--text-light);
+            padding: 0.85rem;
+            border-radius: 0.6rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.3rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .social-link:hover {
+            transform: translateY(-8px) scale(1.15);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--secondary), var(--tertiary));
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 2px solid rgba(212, 175, 55, 0.2);
+            color: var(--text-muted);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        footer p {
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        footer p:first-child {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            nav ul.active {
+                display: flex;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(10, 10, 10, 0.98);
+                padding: 2rem;
+                gap: 1rem;
+                border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .avatar {
+                width: 200px;
+                height: 200px;
+                font-size: 4rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .modal-content {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">YT</div>
+        <ul id="navMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#internships">Experience</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Video Background -->
+        <div class="video-background">
+            <video 
+                id="bgVideo"
+                autoplay 
+                muted 
+                loop 
+                playsinline
+                style="width: 100%; height: 100%; object-fit: cover;">
+                <source src="https://drive.google.com/uc?export=download&id=1an_3nUOlfaBMeL0NJR-13vxuIpXj5mFw" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-overlay"></div>
+        
+        <!-- Mute Button -->
+        <button class="mute-btn" id="muteBtn" onclick="toggleMute()" title="Toggle Sound">
+            🔇
+        </button>
+
+        <div class="hero-content">
+            <h1>Yassin Tamer</h1>
+            <p class="subtitle">Cybersecurity Professional</p>
+            <p class="tagline">Building Secure Networks • Mastering IT Infrastructure<br>Solving Complex Problems with Cutting-Edge Technology</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Let's Connect</a>
+                <a href="https://www.linkedin.com/in/yassin-tamer-b1b50b33b" target="_blank" class="btn btn-secondary">LinkedIn Profile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Cybersecurity Innovator</h3>
+                <p>I'm a passionate Cybersecurity student at Alexandria National University with expertise in networking, security protocols, and enterprise IT solutions. My foundation in programming and database management enables me to develop comprehensive security strategies.</p>
+                <p>With hands-on training in Cisco CCNA and Oracle technologies, I specialize in network configuration, threat analysis, and building resilient IT infrastructure. I'm dedicated to continuous learning and staying ahead of emerging cybersecurity trends.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">4+</div>
+                        <div class="stat-label">Certifications</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Internships</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">7</div>
+                        <div class="stat-label">Tech Skills</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="avatar">👨‍💻</div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Technical Excellence</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <div class="skill-icon">🔐</div>
+                <h3>Cybersecurity</h3>
+                <ul class="skill-list">
+                    <li>Cybersecurity Fundamentals</li>
+                    <li>Network Security</li>
+                    <li>Security Protocols</li>
+                    <li>Threat Analysis</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <h3>Networking & Cisco</h3>
+                <ul class="skill-list">
+                    <li>Introduction to Networks</li>
+                    <li>Switching & Routing</li>
+                    <li>Enterprise Solutions</li>
+                    <li>Wireless Essentials</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">💻</div>
+                <h3>Programming</h3>
+                <ul class="skill-list">
+                    <li>Python Development</li>
+                    <li>Java Programming</li>
+                    <li>Problem Solving</li>
+                    <li>Algorithm Design</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <h3>Database & SQL</h3>
+                <ul class="skill-list">
+                    <li>SQL Programming</li>
+                    <li>Oracle Database</li>
+                    <li>PL/SQL Development</li>
+                    <li>Oracle APEX</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🤝</div>
+                <h3>Professional Skills</h3>
+                <ul class="skill-list">
+                    <li>Team Leadership</li>
+                    <li>Communication</li>
+                    <li>Project Management</li>
+                    <li>Technical Documentation</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">💡</div>
+                <h3>IT Fundamentals</h3>
+                <ul class="skill-list">
+                    <li>Computer Engineering</li>
+                    <li>System Architecture</li>
+                    <li>IT Infrastructure</li>
+                    <li>Hardware Knowledge</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internships Section -->
+    <section id="internships">
+        <h2>Professional Journey</h2>
+        
+        <div class="internship-card">
+            <div class="internship-header">
+                <div>
+                    <div class="internship-title">Cisco CCNA Training Program</div>
+                    <div class="internship-company">WE Internship</div>
+                </div>
+                <div class="internship-meta">
+                    <span class="meta-badge">📅 February 2026</span>
+                    <span class="meta-badge">⏱️ 100 Hours</span>
+                </div>
+            </div>
+            <div class="internship-description">
+                Completed intensive Cisco CCNA (200-301) training program covering comprehensive networking fundamentals, enterprise networking solutions, advanced security protocols, and automation technologies. Gained hands-on experience in network design, configuration, switching, routing, wireless essentials, and enterprise security implementations.
+            </div>
+            <div class="skill-tags">
+                <span class="tag">Cisco CCNA</span>
+                <span class="tag">Network Security</span>
+                <span class="tag">Automation</span>
+                <span class="tag">Switching & Routing</span>
+                <span class="tag">Wireless Networking</span>
+            </div>
+        </div>
+
+        <div class="internship-card">
+            <div class="internship-header">
+                <div>
+                    <div class="internship-title">Computer Engineering Training</div>
+                    <div class="internship-company">EPROM Internship Program</div>
+                </div>
+                <div class="internship-meta">
+                    <span class="meta-badge">📅 September 2025</span>
+                    <span class="meta-badge">⏱️ 60 Hours</span>
+                </div>
+            </div>
+            <div class="internship-description">
+                Intensive computer engineering training focused on enterprise database technologies and solutions. Developed advanced proficiency in Oracle Database administration, SQL query optimization, PL/SQL programming, and Oracle APEX application development. Expertise in database design patterns, performance optimization, and enterprise application architecture.
+            </div>
+            <div class="skill-tags">
+                <span class="tag">Oracle Database</span>
+                <span class="tag">SQL Programming</span>
+                <span class="tag">PL/SQL</span>
+                <span class="tag">Oracle APEX</span>
+                <span class="tag">Database Design</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates">
+        <h2>Certifications & Achievements</h2>
+        <div class="certificates-container">
+            <div class="certificate-card" onclick="openModal('cert1')">
+                <div class="certificate-visual">
+                    <div class="certificate-icon">📜</div>
+                </div>
+                <div class="certificate-name">CCNA Enterprise Networking 2</div>
+                <div class="certificate-issuer">Cisco Academy</div>
+            </div>
+
+            <div class="certificate-card" onclick="openModal('cert2')">
+                <div class="certificate-visual">
+                    <div class="certificate-icon">📜</div>
+                </div>
+                <div class="certificate-name">CCNA Switching 3</div>
+                <div class="certificate-issuer">Cisco Academy</div>
+            </div>
+
+            <div class="certificate-card" onclick="openModal('cert3')">
+                <div class="certificate-visual">
+                    <div class="certificate-icon">📜</div>
+                </div>
+                <div class="certificate-name">CCNA Introduction to Networks</div>
+                <div class="certificate-issuer">Cisco Academy</div>
+            </div>
+
+            <div class="certificate-card" onclick="openModal('cert4')">
+                <div class="certificate-visual">
+                    <div class="certificate-icon">📜</div>
+                </div>
+                <div class="certificate-name">EPROM Training Certificate</div>
+                <div class="certificate-issuer">EPROM Program</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Modals -->
+    <div id="cert1Modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('cert1')">✕</button>
+            <div class="modal-cert-image">📜</div>
+            <h3>CCNA Enterprise Networking 2</h3>
+            <p class="issuer">Cisco Academy</p>
+            <p class="description">Advanced enterprise networking solutions covering complex routing protocols, network optimization, security implementations, and enterprise-level network design patterns.</p>
+            <div class="cert-details">
+                <div class="cert-detail-item">
+                    <strong>Date:</strong>
+                    <span>March 2026</span>
+                </div>
+                <div class="cert-detail-item">
+                    <strong>Duration:</strong>
+                    <span>40 Hours</span>
+                </div>
+                <div class="cert-detail-item">
+                    <strong>Credential ID:</strong>
+                    <span>CCA-ENT-2026-001</span>
+                </div>
+            </div>
+            <button class="modal-button" onclick="window.open('https://www.linkedin.com/in/yassin-tamer-b1b50b33b', '_blank')">View on LinkedIn</button>
+        </div>
+    </div>
+
+    <div id="cert2Modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('cert2')">✕</button>
+            <div class="modal-cert-image">📜</div>
+            <h3>CCNA Switching 3</h3>
+            <p class="issuer">Cisco Academy</p>
+            <p class="description">Advanced switching technologies focusing on VLAN implementation, spanning tree protocol, link aggregation, and advanced switch configuration for enterprise environments.</p>
+            <div class="cert-details">
+                <div class="cert-detail-item">
+                    <strong>Date:</strong>
+                    <span>February 2026</span>
+                </div>
+                <div class="cert-detail-item">
+                    <strong>Duration:</strong>
+                    <span>35 Hours</span>
+                </div>
+                <div class="cert-detail-item">
+                    <strong>Credential ID:</strong>
+                    <span>CCA-SW-2026-002</span>
+                </div>
+            </div>
+            <button class="modal-button" onclick="window.open('https://www.linkedin.com/in/yassin-tamer-b1b50b33b', '_blank')">View on LinkedIn</button>
+        </div>
+    </div>
+
+    <div id="cert3Modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('cert3')">✕</button>
+            <div class="modal-cert-image">📜</div>
+            <h3>CCNA Introduction to Networks</h3>
+            <p class="issuer">Cisco Academy</p>
+            <p class="description">Comprehensive introduction to networking fundamentals covering network architectures, OSI model, TCP/IP protocols, network services, and basic routing and switching concepts.</p>
+            <div class="cert-details">
+                <div class="cert-detail-item">
+                    <strong>Date:</strong>
+                    <span>January 2026</span>
+                </div>
+                <div class="cert-detail-item">
+                    <strong>Duration:</strong>
+                    <span>30 Hours</span>
+                </div>
+                <div class="cert-detail-item">
+                    <strong>Credential ID:</strong>
+                    <span>CCA-INT-2026-003</span>
+                </div>
+            </div>
+            <button class="modal-button" onclick="window.open('https://www.linkedin.com/in/yassin-tamer-b1b50b33b', '_blank')">View on LinkedIn</button>
+        </div>
+    </div>
+
+    <div id="cert4Modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('cert4')">✕</button>
+            <div class="modal-cert-image">📜</div>
+            <h3>EPROM Training Certificate</h3>
+            <p class="issuer">EPROM Program</p>
+            <p class="description">Intensive computer engineering training program covering database technologies, Oracle Database administration, SQL programming, PL/SQL, and Oracle APEX application development.</p>
+            <div class="cert-details">
+                <div class="cert-detail-item">
+                    <strong>Date:</strong>
+                    <span>September 2025</span>
+                </div>
+                <div class="cert-detail-item">
+                    <strong>Duration:</strong>
+                    <span>60 Hours</span>
+                </div>
+                <div class="cert-detail-item">
+                    <strong>Credential ID:</strong>
+                    <span>EPROM-ENG-2025-001</span>
+                </div>
+            </div>
+            <button class="modal-button" onclick="window.open('https://www.linkedin.com/in/yassin-tamer-b1b50b33b', '_blank')">View on LinkedIn</button>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-grid">
+            <div class="contact-info-box">
+                <h3 style="color: var(--gold); letter-spacing: 1px; font-family: 'Raleway', sans-serif;">Direct Contact</h3>
+
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <div>
+                        <div class="contact-detail-title">Email Address</div>
+                        <div class="contact-detail-text"><a href="mailto:yassintamer0707@gmail.com">yassintamer0707@gmail.com</a></div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <div>
+                        <div class="contact-detail-title">Phone Number</div>
+                        <div class="contact-detail-text"><a href="tel:+201554595100">+20 155 4595 100</a></div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">💼</div>
+                    <div>
+                        <div class="contact-detail-title">LinkedIn</div>
+                        <div class="contact-detail-text"><a href="https://www.linkedin.com/in/yassin-tamer-b1b50b33b" target="_blank">linkedin.com/in/yassin-tamer</a></div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🎓</div>
+                    <div>
+                        <div class="contact-detail-title">Education</div>
+                        <div class="contact-detail-text">Cybersecurity Student<br>Alexandria National University</div>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/yassin-tamer-b1b50b33b" target="_blank" class="social-link" title="LinkedIn">in</a>
+                    <a href="mailto:yassintamer0707@gmail.com" class="social-link" title="Email">✉</a>
+                </div>
+            </div>
+
+            <div class="contact-form-box">
+                <h3 style="color: var(--gold); margin-bottom: 1.5rem; letter-spacing: 1px; font-family: 'Raleway', sans-serif;">Send Me a Message</h3>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Send Message 🚀</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 YASSIN TAMER • CYBERSECURITY PROFESSIONAL</p>
+        <p>Designing Secure Systems | Building Resilient Networks | Protecting Digital Assets</p>
+    </footer>
+
+    <script>
+        // Video Mute Toggle
+        let isMuted = true;
+        const muteBtn = document.getElementById('muteBtn');
+        const bgVideo = document.getElementById('bgVideo');
+
+        function toggleMute() {
+            isMuted = !isMuted;
+            bgVideo.muted = isMuted;
+            
+            // Update button text with animation
+            muteBtn.style.transform = 'scale(1.2)';
+            muteBtn.textContent = isMuted ? '🔇' : '🔊';
+            setTimeout(() => {
+                muteBtn.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // Modal Functions
+        function openModal(certId) {
+            const modal = document.getElementById(certId + 'Modal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(certId) {
+            const modal = document.getElementById(certId + 'Modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = this.querySelector('input[name="name"]').value;
+            const email = this.querySelector('input[name="email"]').value;
+            const subject = this.querySelector('input[name="subject"]').value;
+            const message = this.querySelector('textarea[name="message"]').value;
+
+            const mailtoLink = `mailto:yassintamer0707@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
+            window.location.href = mailtoLink;
+            this.reset();
+        });
+    </script>
+</body>
+</html>
